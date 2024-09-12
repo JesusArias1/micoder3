@@ -1,0 +1,32 @@
+$spacing: 8px;
+$spacing2: 16px;
+
+
+//operaciones 
+div {
+    padding: $spacing*$spacing2;
+}
+
+// Condicional
+$animal: perro;
+
+div {
+
+    @if $animal == pato {
+        color: blue;
+    } @else if $animal != pato{
+        color: black;
+    }
+}
+
+
+// Bucles
+@for $i from 1 through 6 {
+    // Interpolaciones
+
+    h#{$i} {
+         
+            font-size: 24em / $i;
+        }
+    
+}
