@@ -1,10 +1,10 @@
 $spacing: 8px;
-$spacing2: 16px;
+$spacing-2: 14px;
 
 
 //operaciones 
 div {
-    padding: $spacing*$spacing2;
+    padding: $spacing*1$spacing-2;
 }
 
 // Condicional
@@ -21,12 +21,75 @@ div {
 
 
 // Bucles
-@for $i from 1 through 6 {
-    // Interpolaciones
-
+@for $i from  1 through 6 {
+    // interpolaciones
     h#{$i} {
-         
-            font-size: 24em / $i;
-        }
-    
+        font-size: 20em / $i;
+    }
+}
+
+// Each 
+$lista-colores: red, blue, green, yellow; 
+
+@each $item  in $lista-colores  {
+    .color-#{$item} {
+        background-color: $item;
+    }
+}
+// Los mapas son variables cuyo valor es una coleccion de variables. se definen con un nombre que los identifica. las claves suelen ser cadenas o numeros, mientrass que los valores pueden ser cualquier tipo de dato. Ejemplo: suponte que se necesita crear una serie de botones para compartir contenido y exigen tres de diferente color. para no crearlos uno a uno. generas un mapa con clave "el boton  y el valor" "el color que tendra"
+
+
+// maps 
+
+// redes es el mapa,  es el que hace referencia a los kits dentro del mapa y $color es el valor de los kits
+
+$redes: (
+    twitter: #339be0,
+    facebook: #0026a2,
+    instagram: #c000f6,
+);
+
+@each $red, $color in $redes {
+    .red-#{$red} {
+        color: $color;
+        width: 50px;
+        height: 50px;
+        padding: $spacing;
+        margin: $spacing-2;
+        display: flex;
+    }
+} 
+
+// extend 
+.boton {
+    border: solid 2px;
+    padding: 8px 16px;
+    margin: 8px;
+}
+.boton-primario {
+    @extend .boton;
+    background-color: blue;
+    border-color: blue;
+}
+
+// mixins
+// @mixin size($alto, $ancho, $margin) {
+//     height: $alto;
+//     width: $ancho;
+//     margin: $margin;
+// }
+// div {
+//     @include size(200px, 200px, 8px);
+// }
+
+@mixin size {
+    height: 200px;
+    width: 200px;
+    margin: 8px;
+}
+div {
+    @include size;
+    // padding: auto;
+    // border: solid;
+    // @extend .boton;
 }
